@@ -1,4 +1,5 @@
 import INotebook from '../interfaces/INotebook';
+import INotebookDetail from '../interfaces/INotebookDetails';
 import NotebookScraping from '../scraping/NotebookScraping';
 
 export default class NotebookService {
@@ -18,4 +19,8 @@ export default class NotebookService {
     return notebooksSortedByValue;
   }
 
+  static async getById(id: number): Promise<INotebookDetail> {
+    const notebook = await NotebookScraping.getNotebookDetailById(id);
+    return notebook;
+  }
 }
