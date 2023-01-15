@@ -15,4 +15,14 @@ export default class NotebookController {
       return next(err);
     }
   }
+
+  static async getById(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      const notebook = await NotebookService.getById(Number(id));
+      return res.status(200).json(notebook);
+    } catch (err) {
+      return next(err);
+    }
+  }
 }
