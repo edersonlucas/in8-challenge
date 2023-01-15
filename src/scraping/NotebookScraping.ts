@@ -7,14 +7,20 @@ import ErrorGenerator from '../utils/ErrorGenerator';
 export default class NotebookScraping {
   static async getAllNotebooks(): Promise<INotebook[]> {
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox'],
+      headless: true,
+      args: [
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
+        '--no-sandbox',
+      ],
     });
     const page = await browser.newPage();
     await page.goto(
       'https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops',
     );
     try {
-      await page.waitForSelector('.thumbnail');
+      await page.waitForSelector('.thumbnail', { timeout: 2000 });
       const notebooks = await page.$$eval('.thumbnail', (elements) =>
         elements.map((element) => ({
           id: Number(
@@ -58,14 +64,20 @@ export default class NotebookScraping {
 
   static async getNotebookDetailById(id: number): Promise<INotebookDetails> {
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox'],
+      headless: true,
+      args: [
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
+        '--no-sandbox',
+      ],
     });
     const page = await browser.newPage();
     await page.goto(
       `https://webscraper.io/test-sites/e-commerce/allinone/product/${id}`,
     );
     try {
-      await page.waitForSelector('.caption');
+      await page.waitForSelector('.caption', { timeout: 2000 });
       const title =
         (await page.$eval(
           '.caption > h4:nth-child(2)',
