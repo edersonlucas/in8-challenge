@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node ./build/server.js",
-    "dev": "ts-node ./src/server.ts",
+    "dev": "ts-node-dev --ignore-watch node_modules --exit-child src/server",
     "lint": "eslint ./src --ext .ts"
   },
   "keywords": [],
