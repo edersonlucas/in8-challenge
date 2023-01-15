@@ -6,9 +6,10 @@ import ErrorGenerator from '../utils/ErrorGenerator';
 
 export default class NotebookScraping {
   static async getAllNotebooks(): Promise<INotebook[]> {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox'],
+    });
     const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 800 });
     await page.goto(
       'https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops',
     );
@@ -51,14 +52,15 @@ export default class NotebookScraping {
       return notebooks;
     } catch (e) {
       await browser.close();
-      throw new ErrorGenerator(404, 'No notebook found!');
+      throw new ErrorGenerator(500, 'Internal Server Error!');
     }
   }
 
   static async getNotebookDetailById(id: number): Promise<INotebookDetails> {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox'],
+    });
     const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 800 });
     await page.goto(
       `https://webscraper.io/test-sites/e-commerce/allinone/product/${id}`,
     );
