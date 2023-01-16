@@ -13,10 +13,7 @@ export default class NotebookService {
     const notebooksFilteredByName = notebooks.filter((item: INotebook) =>
       item.title?.toLowerCase().includes(name.toLowerCase()),
     );
-    const notebooksSortedByValue = notebooksFilteredByName.sort(
-      (a: INotebook, b: INotebook) => a.price.value - b.price.value,
-    );
-    return notebooksSortedByValue;
+    return notebooksFilteredByName;
   }
 
   static async getById(id: number): Promise<INotebookDetail> {
