@@ -24,6 +24,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Prettier
 - ESLint
 
+## 📋 Case
+
+Criar uma API simples que busca algumas informações de notebooks sobre uma determinada URL/página da Web e retorna os resultados em JSON.
+
 ## 🛠️ Como instalar
 
 **#Clonar este repositório**
@@ -56,6 +60,7 @@ docker exec -it backend /bin/sh
 npm run test:coverage
 
 ```
+
 ### ‍💻 Rodando sem Docker
 
 ⚠️ **Atenção**: Você precisa ter o node instalado em sua máquina para rodar o projeto.
@@ -65,11 +70,13 @@ npm run test:coverage
 ```
 npm install
 ```
+
 **#Rode o seguinte comando para executar a aplicação**
 
 ```
 npm run dev
 ```
+
 **#Para executar os testes de cobertura do backend, use os seguintes comandos:**
 
 ```
