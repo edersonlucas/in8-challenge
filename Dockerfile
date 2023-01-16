@@ -13,18 +13,6 @@ WORKDIR /backend
 
 COPY . .
 
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && mkdir -p /home/pptruser/Downloads \
-    && mkdir -p /backend/node_modules \
-    && mkdir -p /backend/build \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /backend/node_modules \
-    && chown -R pptruser:pptruser /backend/package.json \
-    && chown -R pptruser:pptruser /backend/package-lock.json \
-    && chown -R pptruser:pptruser /backend/build
-
-USER pptruser
-
 RUN ["npm", "install"]
 
 RUN ["npm", "run", "build"]
