@@ -1,0 +1,356 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "IN8 API Documentation",
+    "description": "Essa API tem como objetivo buscar notebooks",
+    "contact": {
+      "email": "edersonlucas@outlook.com.br"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "API"
+    }
+  ],
+  "paths": {
+    "/notebooks": {
+      "get": {
+        "summary": "Busca os notebooks",
+        "description": "Essa rota será a responsável por buscas os notebooks.",
+        "tags": ["Notebooks"],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotebooksData"
+                },
+                "example": [
+                  {
+                    "id": 545,
+                    "title": "Asus VivoBook X4...",
+                    "price": {
+                      "value": 295.99,
+                      "currency": "USD"
+                    },
+                    "description": "Asus VivoBook X441NA-GA190 Chocolate Black, 14\", Celeron N3450, 4GB, 128GB SSD, Endless OS, ENG kbd",
+                    "rating": {
+                      "qtyReviews": 14,
+                      "ratingLevel": 3
+                    }
+                  },
+                  {
+                    "id": 546,
+                    "title": "Prestigio SmartB...",
+                    "price": {
+                      "value": 299,
+                      "currency": "USD"
+                    },
+                    "description": "Prestigio SmartBook 133S Dark Grey, 13.3\" FHD IPS, Celeron N3350 1.1GHz, 4GB, 32GB, Windows 10 Pro + Office 365 1 gadam",
+                    "rating": {
+                      "qtyReviews": 8,
+                      "ratingLevel": 2
+                    }
+                  },
+                  {
+                    "id": 547,
+                    "title": "Prestigio SmartB...",
+                    "price": {
+                      "value": 299,
+                      "currency": "USD"
+                    },
+                    "description": "Prestigio SmartBook 133S Gold, 13.3\" FHD IPS, Celeron N3350 1.1GHz, 4GB, 32GB, Windows 10 Pro + Office 365 1 gadam",
+                    "rating": {
+                      "qtyReviews": 12,
+                      "ratingLevel": 4
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  }
+                },
+                "example": {
+                  "message": "Internal Server Error!"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notebooks?name=Lenovo": {
+      "get": {
+        "summary": "Busca os notebooks pelo nome da marca",
+        "description": "Essa rota será a responsável por buscas os notebooks pelo nome da marca.",
+        "tags": ["Notebooks"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "require": true,
+            "description": "Nome da marca do notebook"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotebooksData"
+                },
+                "example": [
+                  {
+                    "id": 548,
+                    "title": "Lenovo V110-15IA...",
+                    "price": {
+                      "value": 321.94,
+                      "currency": "USD"
+                    },
+                    "description": "Lenovo V110-15IAP, 15.6\" HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home",
+                    "rating": {
+                      "qtyReviews": 5,
+                      "ratingLevel": 3
+                    }
+                  },
+                  {
+                    "id": 549,
+                    "title": "Lenovo V110-15IA...",
+                    "price": {
+                      "value": 356.49,
+                      "currency": "USD"
+                    },
+                    "description": "Asus VivoBook 15 X540NA-GQ008T Chocolate Black, 15.6\" HD, Pentium N4200, 4GB, 500GB, Windows 10 Home, En kbd",
+                    "rating": {
+                      "qtyReviews": 6,
+                      "ratingLevel": 2
+                    }
+                  },
+                  {
+                    "id": 557,
+                    "title": "Lenovo ThinkPad...",
+                    "price": {
+                      "value": 404.23,
+                      "currency": "USD"
+                    },
+                    "description": "Lenovo ThinkPad E31-80, 13.3\" HD, Celeron 3855U 1.6GHz, 4GB, 128GB SSD, Windows 10 Home",
+                    "rating": {
+                      "qtyReviews": 12,
+                      "ratingLevel": 1
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  }
+                },
+                "example": {
+                  "message": "Internal Server Error!"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notebook/{id}": {
+      "get": {
+        "summary": "Busca detalhes de um notebook",
+        "description": "Essa rota será a responsável por buscas um notebook pelo seu ID.",
+        "tags": ["Notebook"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "require": true,
+            "description": "ID do notebook"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotebookData"
+                },
+                "example": {
+                  "title": "Lenovo V110-15IAP",
+                  "description": "Lenovo V110-15IAP, 15.6\" HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home",
+                  "versions": [
+                    {
+                      "price": {
+                        "value": 321.94,
+                        "currency": "USD"
+                      },
+                      "hdd": "128",
+                      "available": true
+                    },
+                    {
+                      "price": {
+                        "value": 341.94,
+                        "currency": "USD"
+                      },
+                      "hdd": "256",
+                      "available": true
+                    },
+                    {
+                      "price": {
+                        "value": 361.94,
+                        "currency": "USD"
+                      },
+                      "hdd": "512",
+                      "available": true
+                    },
+                    {
+                      "price": {
+                        "value": 381.94,
+                        "currency": "USD"
+                      },
+                      "hdd": "1024",
+                      "available": false
+                    }
+                  ],
+                  "rating": {
+                    "qtyReviews": 5,
+                    "ratingLevel": 3
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": "string"
+                  }
+                },
+                "example": {
+                  "message": "Notebook not found!"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NotebooksData": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "title": {
+              "type": "string"
+            },
+            "price": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                },
+                "currency": {
+                  "type": "USD"
+                }
+              }
+            },
+            "description": {
+              "type": "string"
+            },
+            "rating": {
+              "type": "object",
+              "properties": {
+                "qtyReviews": {
+                  "type": "integer"
+                },
+                "ratingLevel": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotebookData": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "version": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "integer"
+                    },
+                    "currency": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "hdd": {
+                  "type": "string"
+                },
+                "available": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "rating": {
+            "type": "object",
+            "properties": {
+              "qtyReviews": {
+                "type": "integer"
+              },
+              "ratingLevel": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
