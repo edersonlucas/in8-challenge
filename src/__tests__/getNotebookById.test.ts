@@ -25,7 +25,7 @@ describe('GET /notebook/:id', () => {
     afterEach(() => {
       (NotebookScraping.getNotebookDetailById as sinon.SinonStub).restore();
     });
-    it('Should return a 200 status code and all notebooks', async () => {
+    it('Should return a 200 status code and notebook details', async () => {
       const httpResponse: Response = await chai
         .request(app)
         .get('/notebook/548');
