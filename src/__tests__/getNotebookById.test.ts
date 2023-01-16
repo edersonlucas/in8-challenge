@@ -9,6 +9,7 @@ import NotebookScraping from '../scraping/NotebookScraping';
 import { returnGetNotebookDetailByIdMethod } from './mocks/notebookScraping.mock';
 import { notebookNotFoundErrorResponse } from './mocks/error.mock';
 import ErrorGenerator from '../utils/ErrorGenerator';
+import { expectedNotebook } from './mocks/notebookService.mock';
 
 chai.use(chaiHttp);
 
@@ -29,9 +30,7 @@ describe('GET /notebook/:id', () => {
         .request(app)
         .get('/notebook/548');
       expect(httpResponse.status).to.equal(200);
-      expect(httpResponse.body).to.deep.equal(
-        returnGetNotebookDetailByIdMethod,
-      );
+      expect(httpResponse.body).to.deep.equal(expectedNotebook);
     });
   });
 

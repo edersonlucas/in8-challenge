@@ -1908,3 +1908,47 @@ export const expectedNotebooks = [
     },
   },
 ];
+
+export const expectedNotebook = {
+  title: 'Lenovo V110-15IAP',
+  description:
+    'Lenovo V110-15IAP, 15.6" HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home',
+  versions: [
+    {
+      price: {
+        value: 321.94,
+        currency: 'USD',
+      },
+      hdd: '128',
+      available: true,
+    },
+    {
+      price: {
+        value: 341.94,
+        currency: 'USD',
+      },
+      hdd: '256',
+      available: true,
+    },
+    {
+      price: {
+        value: 361.94,
+        currency: 'USD',
+      },
+      hdd: '512',
+      available: true,
+    },
+    {
+      price: {
+        value: 381.94,
+        currency: 'USD',
+      },
+      hdd: '1024',
+      available: false,
+    },
+  ],
+  rating: {
+    qtyReviews: 5,
+    ratingLevel: 3,
+  },
+};
