@@ -26,7 +26,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 📋 Case
 
-Criar uma API simples que busca algumas informações de notebooks sobre uma determinada URL/página da Web e retorna os resultados em JSON.
+Elaborar uma API que faça Web Scraping para buscar algumas informações de notebooks sobre uma determinada URL/página da Web e retorna os resultados em JSON.
 
 ## 🛠️ Como instalar
 
